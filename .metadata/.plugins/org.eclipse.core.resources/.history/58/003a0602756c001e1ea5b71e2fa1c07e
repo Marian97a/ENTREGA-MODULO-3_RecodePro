@@ -1,0 +1,73 @@
+package dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import modelos.Clientes;
+
+public class ClienteDAO {
+ 
+	//create
+	public void create(Clientes cliente) {
+	
+	String sql = insert into Clientes (idClientes, Nome, CPF, Email, Telefone) VALUES ('?', '?', '?', '?', '?');
+		
+		Connection conn = null;
+		PreparedStantement pstm = null;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//read
+	public List<Clientes> read(){
+		List<Clientes> usuarios = new ArrayList<Clientes>();
+		
+		System.out.println("*** READ ***");
+		
+		return usuarios;
+	}
+	
+	//update
+	public void update(Clientes cliente) {
+		System.out.println("*** UPDATE ***");
+	}
+	
+	//delete
+	public void delete(int id) {
+		System.out.println("*** DELETE ***");
+	}
+	
+	//readByid
+	public Clientes readByid(int id) {
+		System.out.println("*** READBYID ***");
+		
+		return new Clientes();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

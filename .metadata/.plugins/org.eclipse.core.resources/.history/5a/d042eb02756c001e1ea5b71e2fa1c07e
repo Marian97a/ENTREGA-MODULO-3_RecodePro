@@ -1,0 +1,79 @@
+package modelos;
+
+public class Clientes {
+	//Attributes
+	
+	private int id;
+	private String nome;
+	private String CPF;
+	private String telefone;
+	
+
+	// Constructor
+	public Clientes() {
+	}
+
+
+	public Clientes(int id, String nome, String cPF, String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.CPF = cPF;
+		this.telefone = telefone;
+	}
+
+
+	public Clientes(String nome, String cPF, String telefone) {
+		super();
+		this.nome = nome;
+		this.CPF = cPF;
+		this.telefone = telefone;
+	}
+
+	// getters e setters
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getCPF() {
+		return CPF;
+	}
+
+
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	//toString
+	@Override
+	public String toString() {
+		return "Clientes [id=" + id + ", nome=" + nome + ", CPF=" + CPF + ", telefone=" + telefone + "]";
+	}
+	
+}

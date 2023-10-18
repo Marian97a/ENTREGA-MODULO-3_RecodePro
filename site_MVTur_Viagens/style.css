@@ -1,0 +1,145 @@
+@media screen and (max-width: 768px){
+    .container fieldset {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+body, 
+html {
+  background: #d0e1f0;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+#menu {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-weight: bold;
+}
+.navbar-collapse {
+  position: relative;
+  display: flex;
+  justify-content: space-between; 
+}
+.navbar img {
+  float: left;
+  width: 50px;
+  height: auto;
+  font-style: italic;
+}
+.container fieldset {
+    display: flex;
+    width: 0  auto;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #338ad1;
+    border-radius: 5px;
+  }
+  a {
+    color: #032b4b;
+  }
+  legend {
+    color: #032b4b;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+  }
+  .form-check-input {
+    border-color: #302929;
+    width: 18px;
+    height: 18px;
+  }
+  .form-check-label {
+    color: #032b4b;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+  input[type="text"] {
+    color: #032b4b;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: 1px solid #338ad1;
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+    height: 40px;
+  }
+  label[for="data_ida"] {
+    color: #032b4b;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    padding: 3px;
+    width: 200px;
+    height: 40px;
+  }
+  label[for="data_volta"] {
+    color: #032b4b;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    padding: 3px;
+    width: 200px;
+    height: 40px;
+  }
+  .datepicker {
+    width: 250px;
+    height: 40px;
+    border: 1px solid #338ad1;
+    border-radius: 5px;
+    padding: 16px;
+    font-size: 12px;
+    gap: 2px;
+    display: flex;
+  }
+  input[type="number"][name="Passageiros"] {
+    color: #000;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #338ad1;
+    border-radius: 2px;
+    padding: 1px;
+    width: 100px;
+    height: 40px;
+  }
+  input[type="submit"] {
+    background-color: #032b4b;
+    color: #fff;
+    width: 84px;
+    height: 35px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  footer img, p {
+    text-align: center;
+  }
+  .card {
+    width: 500;
+    height: 350;
+    background-color: #3ca4fa;
+    padding: auto;
+  }
+h5 {
+  font-weight: bold;
+  color: #032b4b;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #610a0a;
+}
+.cards {
+  margin-bottom: 20px;
+}

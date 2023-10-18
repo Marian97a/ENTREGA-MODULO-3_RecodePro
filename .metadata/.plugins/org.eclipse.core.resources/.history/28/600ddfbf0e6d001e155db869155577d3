@@ -1,0 +1,168 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import connection.ConnectionMySQL;
+import modelos.Clientes;
+
+public class ClienteDAO {
+ 
+	//create
+	public void create(Clientes cliente) {
+		
+	    String sql = "INSERT INTO Clientes (idClientes, Nome, CPF, Email, Telefone) VALUES('?', '?', '?', '?')";
+
+		
+	    Connection conn = null;
+		PreparedStatement pstm = null;
+
+		try {
+		    conn = ConnectionMySQL.createConnectionMySQL();
+
+		    pstm = conn.prepareStatement(sql);
+
+		    pstm.setString(1, cliente.getNome());
+		    pstm.setString(2, cliente.getCPF());
+		    pstm.setString(3, cliente.getEmail());
+		    pstm.setString(4, cliente.getTelefone());
+		   
+
+		    pstm.execute();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm != null)
+			        pstm.close();
+			    
+
+			    if (conn != null) {
+			        conn.close();
+			    }
+			}catch (Exception e) {
+				e.printStackTrace();
+		}
+	}
+}
+	
+	
+	//read
+	public List<Clientes> read(){
+		List<Clientes> clientes = new ArrayList<Clientes>();
+		String sql = "select * from Clientes";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			conn = ConnectionMySQL.createConnectionMySQL();
+			pstm = conn.prepareStatement(sql);
+			rset = pstm.executeQuery();
+			
+			while (rset.next()) {
+				Clientes cliente = new Clientes();
+				 
+				cliente.setId(rset.getInt("idcliente"));
+				cliente.setNome(rset.getString("nome"));
+				cliente.setCPF(rset.getString("cpf"));
+				cliente.setEmail(rset.getString("email"));
+				cliente.setTelefone(rset.getString("telefone"));
+				
+				clientes.add(cliente);
+
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm != null)
+			        pstm.close();
+			    
+
+			    if (conn != null) {
+			        conn.close();
+			    }
+			}catch (Exception e) {
+				e.printStackTrace();
+		}
+		}
+		
+		return clientes;
+	}
+	
+	//update
+	public void update(Clientes cliente) {
+		String sql = "UPDATE Clientes SET nome= ?, CPF = ?, email = ?, telefone = ? WHERE idClientes = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		try {
+		    conn = ConnectionMySQL.createConnectionMySQL();
+
+		    pstm = conn.prepareStatement(sql);
+
+		    pstm.setString(1, cliente.getNome());
+		    pstm.setString(2, cliente.getCPF());
+		    pstm.setString(3, cliente.getEmail());
+		    pstm.setString(4, cliente.getTelefone());
+		    pstm.setInt(5, cliente.getId());
+		   
+
+		    pstm.execute();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm != null)
+			        pstm.close();
+			    
+
+			    if (conn != null) {
+			        conn.close();
+			    }
+			}catch (Exception e) {
+				e.printStackTrace();
+		}
+	 }
+
+	}
+	
+	//delete
+	public void delete(int id) {
+		System.out.println("*** DELETE ***");
+	}
+	
+	//readByid
+	public Clientes readByid(int id) {
+		System.out.println("*** READBYID ***");
+		
+		return new Clientes();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,219 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import connection.ConnectionMySQL;
+import modelos.Passagem;
+import modelos.Passagens;
+
+public class PassagensDAO {
+	//create
+		public void create(Passagens Passagem) {
+			
+		    String sql = "INSERT INTO Passagem (valorPassagem, idPassagens, idDestino)VALUES(?, ?, ?),";
+
+		    Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			try {
+			    connection = ConnectionMySQL.createConnectionMySQL();
+
+			    preparedStatement = connection.prepareStatement(sql);
+
+			    preparedStatement.setDouble(1, Passagem.getvalor_passagens());
+			    preparedStatement.setInt(2, Passagem.getDestino().getId());
+			    preparedStatement.setInt(3, Passagem.getCliente().getId());
+			 
+			   
+
+			    preparedStatement.execute();
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				    
+
+				    if (preparedStatement != null) {
+				        connection.close();
+				    }
+				}catch (Exception e) {
+					e.printStackTrace();
+			}
+		}
+	}
+		
+		
+		//read
+		public List<Passagens> read(){
+			List<Passagens> Passagens = new ArrayList<Passagens>();
+			String sql = "select * from Passagens";
+			
+			Connection conn = null;
+			PreparedStatement pstm = null;
+			ResultSet rset = null;
+			
+			try {
+				conn = ConnectionMySQL.createConnectionMySQL();
+				pstm = conn.prepareStatement(sql);
+				rset = pstm.executeQuery();
+				
+				while (rset.next()) {
+					Passagens Passagem = new Passagens();
+					Destinos destino = new Destinos();
+					Clientes cliente = new Clientes();
+					 
+					Passagem.setId(rset.getInt("idPassagens"));
+					Passagem.valor_passagem(rset.getString("nome"));
+					Passagem.setCPF(rset.getString("cpf"));
+					Passagem.setEmail(rset.getString("email"));
+					Passagem.setTelefone(rset.getString("telefone"));
+					
+					Passagens.add(Passagem);
+
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (pstm != null)
+				        pstm.close();
+				    
+
+				    if (conn != null) {
+				        conn.close();
+				    }
+				}catch (Exception e) {
+					e.printStackTrace();
+			}
+			}
+			
+			return Passagens;
+		}
+		
+		//update
+		public void update(Passagens Passagem) {
+			String sql = "UPDATE Passagens SET nome= ?, CPF = ?, email = ?, telefone = ? WHERE idPassagens = ?";
+			
+			Connection conn = null;
+			PreparedStatement pstm = null;
+			try {
+			    conn = ConnectionMySQL.createConnectionMySQL();
+
+			    pstm = conn.prepareStatement(sql);
+
+			    pstm.setString(1, Passagem.getNome());
+			    pstm.setString(2, Passagem.getCPF());
+			    pstm.setString(3, Passagem.getEmail());
+			    pstm.setString(4, Passagem.getTelefone());
+			    pstm.setInt(5, Passagem.getId());
+			   
+
+			    pstm.execute();
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (pstm != null)
+				        pstm.close();
+				    
+
+				    if (conn != null) {
+				        conn.close();
+				    }
+				}catch (Exception e) {
+					e.printStackTrace();
+			}
+		 }
+
+		}
+		
+		
+		//delete
+		public void delete(int id) {
+			String sql = "DELETE FROM Passagens WHERE idPassagens = ?";
+			
+			Connection conn = null;
+			PreparedStatement pstm = null;
+			try {
+			    conn = ConnectionMySQL.createConnectionMySQL();
+
+			    pstm = conn.prepareStatement(sql);
+
+			    pstm.setInt(1, id);
+			   
+
+			    pstm.execute();
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (pstm != null)
+				        pstm.close();
+				    
+
+				    if (conn != null) {
+				        conn.close();
+				    }
+				}catch (Exception e) {
+					e.printStackTrace();
+			}
+		 }
+
+		}
+		
+		//readByid
+		public Passagens readByid(int id) {
+			Passagens Passagens = new Passagens();
+			String sql = "select * FROM Passagens WHERE idPassagens = ?";
+			
+			Connection conn = null;
+			PreparedStatement pstm = null;
+			ResultSet rset = null;
+			
+			try {
+			    conn = ConnectionMySQL.createConnectionMySQL();
+
+			    pstm = conn.prepareStatement(sql);
+
+			    pstm.setInt(1, id);
+			    
+			    rset = pstm.executeQuery();
+			    
+			    rset.next();
+			    
+			    Passagens.setId(rset.getInt("idPassagens"));
+				Passagens.valor_passagem(rset.getString("nome"));
+				Passagens.setCPF(rset.getString("cpf"));
+				Passagens.setEmail(rset.getString("email"));
+				Passagens.setTelefone(rset.getString("telefone"));
+			   
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (pstm != null)
+				        pstm.close();
+				    
+
+				    if (conn != null) {
+				        conn.close();
+				    }
+				}catch (Exception e) {
+					e.printStackTrace();
+			}
+		 }
+			
+			return Passagens;
+		}
+	}

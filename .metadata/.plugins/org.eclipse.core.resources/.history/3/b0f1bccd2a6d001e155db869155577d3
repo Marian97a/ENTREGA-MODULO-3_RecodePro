@@ -1,0 +1,63 @@
+package modelos;
+
+public class Passagem {
+	private int id;
+	private double valor_passagem;
+	
+	 Clientes cliente;
+	 Destinos destino;
+	 
+	public Passagem() {
+	}
+
+	public Passagem(int id, double valor_passagem, Clientes cliente, Destinos destino) {
+		this.id = id;
+		this.valor_passagem = valor_passagem;
+		this.cliente = cliente;
+		this.destino = destino;
+	}
+
+	public Passagem(double valor_passagem, Clientes cliente, Destinos destino) {
+		this.valor_passagem = valor_passagem;
+		this.cliente = cliente;
+		this.destino = destino;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getValor_passagem() {
+		return valor_passagem;
+	}
+
+	public void setValor_passagem(double valor_passagem) {
+		this.valor_passagem = valor_passagem;
+	}
+
+	public Clientes getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Clientes cliente) {
+		this.cliente = cliente;
+	}
+
+	public Destinos getDestino() {
+		return destino;
+	}
+
+	public void setDestino(Destinos destino) {
+		this.destino = destino;
+	}
+
+	@Override
+	public String toString() {
+		return "Passagem [id=" + id + ", valor_passagem=" + valor_passagem + ", cliente=" + cliente + ", destino="
+				+ destino + "]";
+	}	 
+}

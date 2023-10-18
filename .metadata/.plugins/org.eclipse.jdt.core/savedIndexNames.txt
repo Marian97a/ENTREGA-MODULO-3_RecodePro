@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+C:\Users\mariana\Desktop\ENTREGA MODULO3_RecodePRO\.metadata\.plugins\org.eclipse.jdt.core
+1036061623.index
+1865797976.index
+1858452273.index
+1696264553.index

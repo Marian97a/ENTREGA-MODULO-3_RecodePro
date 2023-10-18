@@ -1,0 +1,49 @@
+package crud;
+
+import java.util.Scanner;
+
+import dao.ClienteDAO;
+
+public class ClientesCRUD {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		ClienteDAO clienteDAO = new ClienteDAO();
+		int opcao =0, id = 0;
+		
+		do {
+			System.out.println("\n======================================= CLIENTES =====================================\n");
+			System.out.println("1-CRIAR  2- CONSULTAR  3-ATUALIZAR  4-DELETAR  5-CONSULTAR POR ID  0-SAIR");
+			opcao = s.nextInt();
+			s.nextLine();
+			
+			switch(opcao) {
+			case 1:
+				clienteDAO.create(new Clientes());
+				break;
+			case 2:
+				clienteDAO.read();
+				break;
+			case 3:
+				clienteDAO.update(new Clientes());
+				break;
+			case 4:
+				clienteDAO.delete(1);
+				break;
+			case 5:
+				clienteDAO.readByid(1);
+				break;
+			default:
+				
+				break;
+			}
+			 
+			
+		}while (opcao != 0);
+		
+		System.out.println("Até mais!");
+
+	}
+	
+}

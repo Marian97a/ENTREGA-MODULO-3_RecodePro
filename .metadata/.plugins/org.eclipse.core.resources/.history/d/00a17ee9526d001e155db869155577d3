@@ -1,0 +1,91 @@
+package crud;
+
+import java.util.Scanner;
+
+import dao.ClienteDAO;
+import dao.passagensDAO;
+import dao.PassagensDAO;
+
+
+public class PassagensCRUD {
+
+	public static void main(String[] args) {
+		
+		    Scanner s = new Scanner(System.in);
+			PassagensDAO passagensDAO  = new PassagensDAO ();
+			ClienteDAO clienteDAO = new ClienteDAO();
+			DestinoDAO destinoDAO = new destinoDAO();
+			
+			int opcao = 0, id = 0;
+			
+			double valor_passagem = 0;
+			
+			do {
+				System.out.println("\n======================================= Passagens =====================================\n");
+				System.out.println("1-CRIAR  2- CONSULTAR  3-ATUALIZAR  4-DELETAR  5-CONSULTAR POR ID  0-SAIR");
+				opcao = s.nextInt();
+				s.nextLine();
+				
+				switch(opcao) {
+				case 1:
+					   System.out.println("Digite o valor da passagem:");
+					   valor_passagem= s.nextDouble();
+					   
+					   Passagens destino1 = new Passagens (origem, destino, partida, chegada);
+						
+					   passagensDAO.create(destino1);
+					break;
+				case 2: 
+					for (Passagens c : passagensDAO.read()) {
+						System.out.println(c.toString());
+					}
+					
+					break;
+				case 3:
+					   System.out.println("Digite o id:");
+					   id = s.nextInt();
+					   s.nextLine();
+					   System.out.println("Digite o origem:");
+					   origem = s.nextLine();
+					   System.out.println("Digite o destino:");
+					   destino = s.nextLine();
+					   System.out.println("Digite o partida:");
+					   partida = s.nextLine();
+					   System.out.println("Digite o chegada:");
+					   chegada = s.nextLine();
+					   
+					   Passagens destino2 = new Passagens(id, origem, destino, partida, chegada);
+					   
+					   passagensDAO.update(destino2);
+					
+					break;
+				case 4:
+					System.out.println("Digite o id:");
+					id = s.nextInt();
+					s.nextLine();
+					   
+					passagensDAO.delete(id);
+					break;
+				case 5:
+					System.out.println("Digite o id:");
+					id = s.nextInt();
+					s.nextLine();
+					
+					Passagens destino3 = passagensDAO.readById(id);
+					
+					System.out.println(destino3.toString());
+					break;
+				default:
+					
+					break;
+				}
+				 
+				
+			}while (opcao != 0);
+		}
+		System.out.println("Até mais!");
+
+	}
+
+	}
+

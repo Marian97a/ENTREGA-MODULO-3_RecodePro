@@ -1,0 +1,90 @@
+package crud;
+
+import java.util.Scanner;
+
+import dao.DestinoDAO;
+
+
+public class DestinoCRUD {
+
+	public static void main(String[] args) {
+		try (Scanner s = new Scanner(System.in)) {
+			DestinoDAO DestinoDAO = new DestinoDAO();
+			int opcao = 0, id = 0;
+			
+			String Destino = "", destino = "", partida = "", chegada = "";
+			
+			do {
+				System.out.println("\n======================================= Destino =====================================\n");
+				System.out.println("1-CRIAR  2- CONSULTAR  3-ATUALIZAR  4-DELETAR  5-CONSULTAR POR ID  0-SAIR");
+				opcao = s.nextInt();
+				s.nextLine();
+				
+				switch(opcao) {
+				case 1:
+					   System.out.println("Digite o Destino:");
+					   Destino = s.nextLine();
+					   System.out.println("Digite o destino:");
+					   destino = s.nextLine();
+					   System.out.println("Digite o partida:");
+					   partida = s.nextLine();
+					   System.out.println("Digite o chegada:");
+					   chegada = s.nextLine();
+					   
+					   Destino Destino1 = new Destino (Destino, destino, partida, chegada);
+						
+					   DestinoDAO.create(Destino1);
+					break;
+				case 2: 
+					for (Destino d : DestinoDAO.read()) {
+						System.out.println(c.toString());
+					}
+					
+					break;
+				case 3:
+					   System.out.println("Digite o id:");
+					   id = s.nextInt();
+					   s.nextLine();
+					   System.out.println("Digite o Destino:");
+					   Destino = s.nextLine();
+					   System.out.println("Digite o destino:");
+					   destino = s.nextLine();
+					   System.out.println("Digite o partida:");
+					   partida = s.nextLine();
+					   System.out.println("Digite o chegada:");
+					   chegada = s.nextLine();
+					   
+					   Destino Destino2 = new Destino(id, Destino, destino, partida, chegada);
+					   
+					   DestinoDAO.update(Destino2);
+					
+					break;
+				case 4:
+					System.out.println("Digite o id:");
+					id = s.nextInt();
+					s.nextLine();
+					   
+					DestinoDAO.delete(id);
+					break;
+				case 5:
+					System.out.println("Digite o id:");
+					id = s.nextInt();
+					s.nextLine();
+					
+					Destino Destino3 = DestinoDAO.readById(id);
+					
+					System.out.println(Destino3.toString());
+					break;
+				default:
+					
+					break;
+				}
+				 
+				
+			}while (opcao != 0);
+		}
+		System.out.println("Até mais!");
+
+	}
+
+	}
